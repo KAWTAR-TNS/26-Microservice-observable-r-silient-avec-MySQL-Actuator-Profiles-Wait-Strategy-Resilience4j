@@ -1,0 +1,37 @@
+server:
+  port: 8081
+
+pricing:
+  base-url: http://localhost:8082
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info"
+  endpoint:
+    health:
+      show-details: "always"
+      probes:
+        enabled: true
+
+resilience4j:
+  retry:
+    instances:
+      pricing:
+        maxAttempts: 3
+        waitDuration: 300ms
+  circuitbreaker:
+    instances:
+      pricing:
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 2

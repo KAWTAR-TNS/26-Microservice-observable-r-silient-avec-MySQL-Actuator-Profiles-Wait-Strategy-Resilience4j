@@ -1,10 +1,5 @@
-# Dockerfile pour le Book Service
-# Build multi-stage: Maven + JDK 21
-#
-# @author Hamza Aglagal
-# @organization EMSI
 
-FROM maven:3.9.9-eclipse-temurin-21 AS build
+FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src

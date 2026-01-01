@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:mysql://mysql:3306/bookdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: bookuser
+    password: bookpass
+
+pricing:
+  base-url: http://pricing-service:8082
